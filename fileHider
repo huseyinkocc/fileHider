@@ -1,0 +1,38 @@
+# Written by Huseyin
+import subprocess
+import sys
+import os
+
+system = os.name
+if system != "posix":
+    print("This Program Only Works On Linux But You Use " + system)
+    sys.exit()
+
+print(" ")
+print(" [1] File Embedding ")
+print(" [2] File Extracting ")
+print(" [3] Exit ")
+
+user_input = input("Select Number > ")
+
+if user_input == "3":
+    print("Program is shutting")
+    sys.exit() 
+
+elif user_input == "1":
+    try:
+        embedingFile = input("File Name To Embed > ")
+        embedIn = input("Select File Name > ")
+        subprocess.call(["steghide", "embed", "-cf", embedIn, "-ef", embedingFile])
+    except Exception as e:
+        print(f"An error Occurred: {e}")
+
+elif user_input == "2":
+    try:
+        embedIn = input("Select Photo Name > ")
+        subprocess.call(["steghide", "extract", "-sf", embedIn])
+    except Exception as e:
+        print(f"An Error Occurred: {e}")
+
+else:
+    print("Select 1, 2 or 3 and try again ")
