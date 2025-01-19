@@ -29,7 +29,7 @@ elif user_input == "1":
 
 elif user_input == "2":
     try:
-        embedIn = input("Select Photo Name > ")
+        embedIn = input("Select File Name > ")
         subprocess.call(["steghide", "extract", "-sf", embedIn])
     except Exception as e:
         print(f"An Error Occurred: {e}")
